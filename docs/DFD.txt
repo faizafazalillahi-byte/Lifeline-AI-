@@ -1,0 +1,104 @@
+LIFELINE AI — DATA FLOW DIAGRAMS (TEXT FORMAT)
+================================================
+
+LEVEL 0 — CONTEXT DIAGRAM
+--------------------------------------------------------------------
+                 +-------------------------+
+   Register/     |                         |    Alerts, Map data,
+   Login,        |                         |    Severity result,
+   SOS trigger -->|      LIFELINE AI        |--> Nearest hospital/
+   GPS coords     |        SYSTEM           |    police, History
+                 |                         |
+   Manage users,  |                         |    Dashboards, Reports,
+   Verify alerts--|                         |--> Analytics
+                 +-------------------------+
+        ^                                          |
+        |  (User)                     (Admin) <----+
+        |
+   Google Maps API <----location/places queries----> System
+
+
+LEVEL 1 — MAJOR PROCESSES
+--------------------------------------------------------------------
+[User] --(credentials)--> (1.0 Authenticate) --> [USERS table]
+                                |
+                                v
+                       (session token / JWT)
+                                |
+        +-----------------------------------------------+
+        |                       |                        |
+        v                       v                        v
+(2.0 Manage Profile   (3.0 Raise SOS /          (4.0 View History /
+ & Contacts)           Track Emergency)          Notifications)
+        |                       |                        |
+        v                       v                        v
+ [EMERGENCY_CONTACTS]   (3.1 Capture GPS) --> [EMERGENCY_LOCATIONS]
+                                |
+                                v
+                     (3.2 AI Severity Prediction)
+                       (Scikit-learn model)
+                                |
+                                v
+                     (3.3 Fake Alert Detection)
+                                |
+                                v
+                     [EMERGENCIES table] (status=pending)
+                                |
+                                v
+                  (3.4 Nearest Hospital/Police Lookup)
+                   --> Google Maps Places API
+                   --> [HOSPITALS] / [POLICE_STATIONS]
+                                |
+                                v
+                     (3.5 Send Notification - simulated)
+                                |
+                                v
+                        [NOTIFICATIONS table]
+                                |
+                                v
+        <----------------------+
+        |
+        v
+[Admin] --(login)--> (5.0 Admin Authenticate)
+        |
+        v
+(6.0 Admin Dashboard: view/verify/update alerts, manage users)
+        |
+        v
+ [EMERGENCIES] (status update) --> [ADMIN_LOGS]
+
+
+LEVEL 2 — SOS / AI SUB-PROCESS (DETAIL OF PROCESS 3.0)
+--------------------------------------------------------------------
+ [User taps SOS]
+        |
+        v
+ 3.1 Get GPS lat/long (Geolocation API)
+        |
+        v
+ 3.2 Collect features: time_of_day, emergency_type, description length,
+     user's historical alert count, movement pattern, heart-rate flag(optional)
+        |
+        v
+ 3.3 severity_model.predict(features) --> Low / Medium / High / Critical
+        |
+        v
+ 3.4 fake_alert_detector.check(features, history) --> fake_score (0-1)
+        |
+        v
+ 3.5 IF fake_score > threshold --> flag is_fake_suspected = TRUE
+     (still logged, but admin sees a warning badge)
+        |
+        v
+ 3.6 INSERT INTO emergencies (... severity_level, severity_score,
+     is_fake_suspected, fake_score, status='pending')
+        |
+        v
+ 3.7 Query nearest hospital & police station (haversine / Places API)
+        |
+        v
+ 3.8 Create notification record + push to admin dashboard (poll/refresh)
+        |
+        v
+ 3.9 Return response to client: {severity, nearest_hospital, nearest_police,
+     emergency_id} --> rendered on SOS screen + live map

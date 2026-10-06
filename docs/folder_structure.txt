@@ -1,0 +1,75 @@
+LifeLine_AI/
+│
+├── backend/
+│   ├── app.py                       # Flask app entry point, blueprint registration
+│   ├── config.py                    # App config (DB creds, JWT secret, Maps key)
+│   ├── requirements.txt             # Python dependencies
+│   │
+│   ├── models/                      # DB access layer (raw SQL wrappers, no ORM)
+│   │   ├── __init__.py
+│   │   ├── user_model.py
+│   │   ├── contact_model.py
+│   │   ├── emergency_model.py
+│   │   ├── facility_model.py
+│   │   └── notification_model.py
+│   │
+│   ├── routes/                      # Flask Blueprints (REST endpoints)
+│   │   ├── __init__.py
+│   │   ├── auth_routes.py
+│   │   ├── user_routes.py
+│   │   ├── emergency_routes.py
+│   │   ├── admin_routes.py
+│   │   └── facility_routes.py
+│   │
+│   ├── ai/                          # Machine learning layer
+│   │   ├── __init__.py
+│   │   ├── train_severity_model.py  # Offline training script
+│   │   ├── severity_model.py        # Loads model, predicts severity
+│   │   ├── fake_alert_detector.py   # Fake-alert scoring logic
+│   │   └── saved_models/            # .joblib model artifacts
+│   │
+│   ├── utils/
+│   │   ├── __init__.py
+│   │   ├── db.py                    # MySQL connection pool
+│   │   ├── auth_utils.py            # Password hashing, JWT encode/decode, decorators
+│   │   └── email_service.py         # Simulated email/notification sender
+│   │
+│   └── database/
+│       ├── schema.sql               # Full MySQL schema (DDL)
+│       └── seed.sql                 # Sample seed data
+│
+├── frontend/
+│   ├── index.html                   # Landing page
+│   ├── login.html
+│   ├── register.html
+│   ├── user_dashboard.html
+│   ├── admin_dashboard.html
+│   ├── sos.html                     # Full-screen SOS + live map view
+│   │
+│   ├── css/
+│   │   ├── style.css                # Global design system (tokens, layout)
+│   │   ├── auth.css                 # Login/Register specific styles
+│   │   ├── dashboard.css            # User + Admin dashboard styles
+│   │   └── sos.css                  # SOS screen + animations
+│   │
+│   ├── js/
+│   │   ├── config.js                # API base URL, Google Maps key placeholder
+│   │   ├── auth.js                  # Login/register logic
+│   │   ├── main.js                  # Shared helpers (fetch wrapper, toasts, navbar)
+│   │   ├── dashboard.js             # User dashboard logic
+│   │   ├── admin.js                 # Admin dashboard logic
+│   │   ├── sos.js                   # SOS button, geolocation, severity display
+│   │   └── map.js                   # Google Maps rendering, markers, nearest search
+│   │
+│   └── assets/
+│       └── images/                  # Logo, icons, illustrations
+│
+├── docs/
+│   ├── architecture.md
+│   ├── folder_structure.txt
+│   ├── ER_diagram.txt
+│   ├── DFD.txt
+│   ├── features_list.md
+│   └── roadmap.md
+│
+└── README.md

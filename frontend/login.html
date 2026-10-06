@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Log In — LifeLine AI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="css/auth.css" />
+</head>
+<body>
+
+<div class="auth-shell">
+
+  <!-- Left: brand panel -->
+  <div class="auth-brand-panel">
+    <a href="index.html" class="brand">
+      <svg class="brand-mark" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+        <path class="pulse-line" d="M2 16 H10 L13 6 L18 26 L21 16 H30" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      LifeLine AI
+    </a>
+
+    <div>
+      <div class="auth-brand-copy">
+        <h2>Your response desk never sleeps.</h2>
+        <p>Log back in to your dashboard — manage contacts, review your emergency history, and stay one tap from help.</p>
+      </div>
+
+      <svg class="ecg-line" viewBox="0 0 500 60" preserveAspectRatio="none" style="margin-top:36px;">
+        <path d="M0,30 L60,30 L70,10 L82,50 L94,30 L160,30 L170,15 L182,45 L194,30 L260,30 L270,5 L282,55 L294,30 L500,30" />
+      </svg>
+
+      <div class="auth-vitals">
+        <div class="vital">
+          <div class="v-label">System Status</div>
+          <div class="v-value">Online</div>
+        </div>
+        <div class="vital">
+          <div class="v-label">Avg Response</div>
+          <div class="v-value">1.8s</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="auth-brand-footer">LIFELINE-AI &middot; SECURE SESSION &middot; JWT AUTHENTICATED</div>
+  </div>
+
+  <!-- Right: form panel -->
+  <div class="auth-form-panel">
+    <div class="auth-form-card">
+      <span class="form-eyebrow">Welcome back</span>
+      <h1>Log in to your account</h1>
+      <p class="subtitle">Access your dashboard, contacts, and emergency history.</p>
+
+      <div class="form-alert" id="form-alert"></div>
+
+      <form id="login-form" novalidate>
+        <div class="field">
+          <label for="email">Email address</label>
+          <input type="email" id="email" name="email" placeholder="you@example.com" required />
+        </div>
+        <div class="field">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" placeholder="••••••••" required />
+        </div>
+        <button type="submit" class="btn btn-danger btn-block">Log In</button>
+      </form>
+
+      <div class="auth-switch">
+        Don't have an account? <a href="register.html">Create one</a>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script src="js/config.js"></script>
+<script src="js/main.js"></script>
+<script src="js/auth.js"></script>
+</body>
+</html>

@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Dashboard — LifeLine AI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="css/dashboard.css" />
+<link rel="stylesheet" href="css/fakecall.css" />
+</head>
+<body>
+
+<div class="dash-shell">
+
+  <!-- Sidebar -->
+  <aside class="dash-sidebar">
+    <a href="index.html" class="brand">
+      <svg class="brand-mark" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+        <path class="pulse-line" d="M2 16 H10 L13 6 L18 26 L21 16 H30" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      LifeLine AI
+    </a>
+
+    <nav class="dash-nav">
+      <a href="sos.html" class="dash-nav-item sos-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4M12 17h.01"/><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/></svg>
+        Raise SOS
+      </a>
+      <button class="dash-nav-item active" data-panel="overview">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9"/><rect x="14" y="3" width="7" height="5"/><rect x="14" y="12" width="7" height="9"/><rect x="3" y="16" width="7" height="5"/></svg>
+        Overview
+      </button>
+      <button class="dash-nav-item" data-panel="contacts">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        Emergency Contacts
+      </button>
+      <button class="dash-nav-item" data-panel="history">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M3 10h18"/><path d="M8 2v4M16 2v4"/></svg>
+        Emergency History
+      </button>
+      <button class="dash-nav-item" data-panel="notifications">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+        Notifications
+      </button>
+      <button class="dash-nav-item" data-panel="profile">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg>
+        Profile
+      </button>
+    </nav>
+
+    <div class="dash-sidebar-footer">
+      <div class="dash-user-chip">
+        <div class="dash-user-avatar" id="sidebar-avatar">--</div>
+        <div>
+          <div class="dash-user-name" id="sidebar-name">Loading...</div>
+          <div class="dash-user-role" id="sidebar-role">user</div>
+        </div>
+      </div>
+      <button class="dash-logout-btn" id="logout-btn">Log Out</button>
+    </div>
+  </aside>
+
+  <!-- Main content -->
+  <main class="dash-main">
+
+    <!-- OVERVIEW -->
+    <section class="dash-panel active" id="panel-overview">
+      <div class="dash-topbar">
+        <div>
+          <h1>Welcome back, <span id="overview-name">there</span></h1>
+          <p>Here's the current state of your safety profile.</p>
+        </div>
+      </div>
+
+      <div class="sos-quick-card">
+        <div>
+          <h3>In danger right now?</h3>
+          <p>One tap shares your live location, gets an AI severity score, and alerts your emergency contacts.</p>
+        </div>
+        <a href="sos.html" class="btn btn-danger">Raise SOS Now</a>
+      </div>
+
+      <div class="stat-cards">
+        <div class="stat-card">
+          <div class="stat-icon" style="background:var(--accent-blue-dim);color:var(--accent-blue);">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M3 10h18"/></svg>
+          </div>
+          <div class="stat-value" id="stat-total">0</div>
+          <div class="stat-label">Total Emergencies Raised</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon" style="background:var(--accent-amber-dim);color:#B67614;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+          </div>
+          <div class="stat-value" id="stat-active">0</div>
+          <div class="stat-label">Currently Active</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon" style="background:var(--accent-teal-dim);color:#0A8A7C;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+          </div>
+          <div class="stat-value" id="stat-contacts">0</div>
+          <div class="stat-label">Emergency Contacts</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon" style="background:var(--accent-red-dim);color:var(--accent-red);">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 3 7v6c0 5 4 9 9 9s9-4 9-9V7z"/></svg>
+          </div>
+          <div class="stat-value" id="stat-last-severity">—</div>
+          <div class="stat-label">Last Reported Severity</div>
+        </div>
+      </div>
+
+      <div class="section-card">
+        <div class="section-card-head"><h3>Most Recent Emergency</h3></div>
+        <div id="last-emergency-content">
+          <div class="empty-state">No emergencies raised yet. Stay safe out there.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACTS -->
+    <section class="dash-panel" id="panel-contacts">
+      <div class="dash-topbar">
+        <div>
+          <h1>Emergency Contacts</h1>
+          <p>These people are notified automatically the moment you raise an SOS.</p>
+        </div>
+        <button class="btn btn-primary" id="open-add-contact">+ Add Contact</button>
+      </div>
+
+      <div class="section-card">
+        <table class="data-table" id="contacts-table">
+          <thead>
+            <tr><th>Name</th><th>Phone</th><th>Relationship</th><th></th></tr>
+          </thead>
+          <tbody id="contacts-tbody"></tbody>
+        </table>
+        <div class="empty-state" id="contacts-empty" style="display:none;">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+          <p>No emergency contacts yet. Add your first one to get started.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- HISTORY -->
+    <section class="dash-panel" id="panel-history">
+      <div class="dash-topbar">
+        <div>
+          <h1>Emergency History</h1>
+          <p>Every alert you've raised, with its AI-assessed severity and status.</p>
+        </div>
+      </div>
+      <div class="section-card">
+        <table class="data-table" id="history-table">
+          <thead>
+            <tr><th>Date</th><th>Type</th><th>Severity</th><th>Status</th></tr>
+          </thead>
+          <tbody id="history-tbody"></tbody>
+        </table>
+        <div class="empty-state" id="history-empty" style="display:none;">
+          <p>No emergency history yet.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- NOTIFICATIONS -->
+    <section class="dash-panel" id="panel-notifications">
+      <div class="dash-topbar">
+        <div>
+          <h1>Notifications</h1>
+          <p>System and simulated-email alerts related to your account.</p>
+        </div>
+      </div>
+      <div class="section-card">
+        <div id="notifications-list"></div>
+        <div class="empty-state" id="notifications-empty" style="display:none;">
+          <p>You're all caught up — no notifications.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROFILE -->
+    <section class="dash-panel" id="panel-profile">
+      <div class="dash-topbar">
+        <div>
+          <h1>Your Profile</h1>
+          <p>Keep this accurate — it's shown to responders during an emergency.</p>
+        </div>
+      </div>
+      <div class="section-card" style="max-width:520px;">
+        <form id="profile-form">
+          <div class="field">
+            <label for="profile-email">Email address</label>
+            <input type="email" id="profile-email" disabled />
+            <div class="hint">Email cannot be changed.</div>
+          </div>
+          <div class="field">
+            <label for="profile-full-name">Full name</label>
+            <input type="text" id="profile-full-name" required />
+          </div>
+          <div class="input-row">
+            <div class="field">
+              <label for="profile-phone">Phone number</label>
+              <input type="tel" id="profile-phone" required />
+            </div>
+            <div class="field">
+              <label for="profile-blood-group">Blood group</label>
+              <select id="profile-blood-group">
+                <option value="">Select</option>
+                <option>A+</option><option>A-</option>
+                <option>B+</option><option>B-</option>
+                <option>AB+</option><option>AB-</option>
+                <option>O+</option><option>O-</option>
+              </select>
+            </div>
+          </div>
+          <div class="field">
+            <label for="profile-address">Home address</label>
+            <input type="text" id="profile-address" />
+          </div>
+          <button type="submit" class="btn btn-primary">Save Changes</button>
+        </form>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<!-- Add/Edit Contact Modal -->
+<div class="modal-overlay" id="contact-modal">
+  <div class="modal-box">
+    <h3 id="contact-modal-title">Add Emergency Contact</h3>
+    <form id="contact-form">
+      <input type="hidden" id="contact-id" />
+      <div class="field">
+        <label for="contact-name">Contact name</label>
+        <input type="text" id="contact-name" required />
+      </div>
+      <div class="field">
+        <label for="contact-phone">Phone number</label>
+        <input type="tel" id="contact-phone" required />
+      </div>
+      <div class="field">
+        <label for="contact-relationship">Relationship</label>
+        <input type="text" id="contact-relationship" placeholder="e.g. Mother, Spouse, Friend" />
+      </div>
+      <div class="modal-actions">
+        <button type="button" class="btn btn-outline" id="cancel-contact-modal">Cancel</button>
+        <button type="submit" class="btn btn-primary">Save Contact</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script src="js/config.js"></script>
+<script src="js/main.js"></script>
+<script src="js/dashboard.js"></script>
+<script src="js/fakecall.js"></script>
+</body>
+</html>

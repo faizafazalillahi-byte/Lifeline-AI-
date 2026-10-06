@@ -1,0 +1,97 @@
+/* =====================================================================
+   fakecall.css — Fake Incoming Call safety feature
+   A believable full-screen "incoming call" overlay a user can trigger
+   discreetly to exit an uncomfortable/unsafe situation.
+   ===================================================================== */
+
+.fakecall-trigger {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 500;
+  background: var(--ink-900);
+  color: var(--white);
+  border: 1px solid var(--ink-700);
+  padding: 12px 18px;
+  border-radius: 100px;
+  font-size: 13px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: var(--shadow-card-lg);
+  transition: transform 0.15s ease;
+}
+.fakecall-trigger:hover { transform: translateY(-2px); }
+
+.fakecall-picker-overlay {
+  position: fixed; inset: 0; background: rgba(11,18,32,0.6);
+  display: none; align-items: flex-end; justify-content: center; z-index: 600; padding: 20px;
+}
+.fakecall-picker-overlay.show { display: flex; }
+.fakecall-picker-box {
+  background: var(--white); border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  padding: 24px; width: 100%; max-width: 420px; box-shadow: var(--shadow-card-lg);
+  animation: sheet-up 0.25s ease;
+}
+@keyframes sheet-up { from { transform: translateY(30px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+.fakecall-picker-box h3 { margin-bottom: 6px; }
+.fakecall-picker-box p { font-size: 13.5px; margin-bottom: 18px; }
+.fakecall-option-list { display: flex; flex-direction: column; gap: 8px; margin-bottom: 14px; }
+.fakecall-option {
+  display: flex; align-items: center; gap: 12px;
+  padding: 12px 14px; border-radius: var(--radius-md);
+  border: 1.5px solid var(--paper-dim); background: var(--white);
+  font-size: 14.5px; font-weight: 600; text-align: left;
+}
+.fakecall-option:hover { border-color: var(--ink-900); }
+.fakecall-option .avatar-dot {
+  width: 34px; height: 34px; border-radius: 50%;
+  background: var(--ink-700); color: var(--white);
+  display: flex; align-items: center; justify-content: center; font-size: 13px; flex-shrink: 0;
+}
+.fakecall-delay-row { display: flex; align-items: center; gap: 10px; font-size: 13px; color: var(--slate-600); margin-bottom: 14px; }
+.fakecall-delay-row select { padding: 6px 10px; border-radius: var(--radius-sm); border: 1.5px solid var(--paper-dim); }
+
+/* ---- The actual fake call overlay ---- */
+.fakecall-overlay {
+  position: fixed; inset: 0; z-index: 9999;
+  background: linear-gradient(180deg, #1B2740 0%, #0B1220 100%);
+  display: none; flex-direction: column; align-items: center; justify-content: space-between;
+  color: #fff; padding: 60px 24px 50px; text-align: center;
+}
+.fakecall-overlay.show { display: flex; }
+
+.fakecall-status { font-size: 14px; color: var(--slate-400); margin-top: 10px; }
+.fakecall-avatar {
+  width: 130px; height: 130px; border-radius: 50%;
+  background: var(--ink-700);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 42px; font-weight: 700; color: var(--accent-teal);
+  margin: 30px 0 20px;
+  animation: fakecall-pulse 1.6s ease-in-out infinite;
+}
+@keyframes fakecall-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(18,184,166,0.4); }
+  50% { box-shadow: 0 0 0 18px rgba(18,184,166,0); }
+}
+.fakecall-name { font-family: var(--font-display); font-size: 26px; font-weight: 700; }
+.fakecall-sub { color: var(--slate-400); font-size: 14px; margin-top: 6px; }
+
+.fakecall-timer { font-family: var(--font-mono); font-size: 16px; color: var(--accent-teal); margin-top: 14px; }
+
+.fakecall-actions { display: flex; gap: 60px; margin-bottom: 10px; }
+.fakecall-btn {
+  width: 64px; height: 64px; border-radius: 50%; border: none;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: var(--shadow-card-lg);
+}
+.fakecall-btn.decline { background: var(--accent-red); }
+.fakecall-btn.answer { background: var(--accent-teal); }
+.fakecall-btn.end { background: var(--accent-red); }
+.fakecall-actions-label { display: flex; gap: 60px; margin-top: 8px; font-size: 12.5px; color: var(--slate-400); }
+.fakecall-actions-label span { width: 64px; text-align: center; }
+
+@media (max-width: 480px) {
+  .fakecall-trigger span.label-text { display: none; }
+}

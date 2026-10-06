@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>LifeLine AI — Mission-Critical Intelligence for Emergency Response</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="container">
+    <a href="index.html" class="brand">
+      <svg class="brand-mark" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+        <path class="pulse-line" d="M2 16 H10 L13 6 L18 26 L21 16 H30" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      LifeLine AI
+    </a>
+    <div class="nav-links">
+      <a href="index.html" class="active">Home</a>
+      <a href="index.html#solutions">Solutions</a>
+      <a href="index.html#how-it-works">How It Works</a>
+      <a href="login.html">Log In</a>
+      <a href="register.html" class="nav-cta">Get Protected</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ================= HERO ================= -->
+<header class="hero">
+  <div class="container">
+    <span class="hero-eyebrow"><span class="dot"></span> AI-powered emergency intelligence &middot; live monitoring</span>
+    <h1>Mission-critical AI for<br>every <span>emergency</span>.</h1>
+    <p class="lead">LifeLine AI connects people, first responders, and an intelligent response desk — turning a single tap into live location, AI-scored severity, and the nearest help, before a word is even said.</p>
+    <div class="hero-actions">
+      <a href="register.html" class="btn btn-danger">Get Protected — It's Free</a>
+      <a href="login.html" class="btn btn-outline" style="color:#fff;border-color:var(--ink-600);">Log In</a>
+    </div>
+
+    <div class="hero-ecg-wrap">
+      <svg class="ecg-line" viewBox="0 0 1200 80" preserveAspectRatio="none">
+        <path d="M0,40 L140,40 L165,10 L190,70 L215,40 L340,40 L365,20 L390,60 L415,40 L540,40 L565,5 L590,75 L615,40 L740,40 L765,15 L790,65 L815,40 L1200,40" />
+      </svg>
+    </div>
+  </div>
+</header>
+
+<!-- ================= TRUSTED-BY STRIP ================= -->
+<section class="trust-strip">
+  <div class="container">
+    <p class="trust-label">A complete intelligent response pipeline — from AI scoring to live dispatch, end to end</p>
+    <div class="trust-logos">
+      <span>REGISTER &amp; VERIFY</span>
+      <span>AI SEVERITY SCORING</span>
+      <span>FAKE-ALERT DETECTION</span>
+      <span>LIVE GPS TRACKING</span>
+      <span>NEAREST FACILITY ROUTING</span>
+      <span>ADMIN RESPONSE DESK</span>
+    </div>
+  </div>
+</section>
+
+<!-- ================= STAT COUNTERS ================= -->
+<section class="stats-strip">
+  <div class="container">
+    <div class="stat"><div class="num mono">4</div><div class="label">Independent AI/ML models working together</div></div>
+    <div class="stat"><div class="num mono">&lt;2s</div><div class="label">To capture GPS &amp; raise an alert</div></div>
+    <div class="stat"><div class="num mono">24/7</div><div class="label">Admin response desk monitoring</div></div>
+    <div class="stat"><div class="num mono">100%</div><div class="label">Locations mapped &amp; routed in real time</div></div>
+  </div>
+</section>
+
+<!-- ================= SOLUTIONS BY AUDIENCE ================= -->
+<section class="features-section" id="solutions">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-eyebrow">Who it's built for</span>
+      <h2>One system, three roles, a single source of truth</h2>
+      <p>Every alert flows through the same intelligent pipeline — the interface simply adapts to who's using it.</p>
+    </div>
+
+    <div class="audience-grid">
+      <div class="audience-card">
+        <div class="audience-tag">Individuals</div>
+        <h3>Raise an SOS in one tap</h3>
+        <p>Live GPS, AI severity scoring, step-by-step first-aid guidance, and your emergency contacts notified — all before you've stopped panicking.</p>
+        <a href="register.html" class="audience-link">Create your account →</a>
+      </div>
+      <div class="audience-card">
+        <div class="audience-tag">Response Teams</div>
+        <h3>A live console, not a spreadsheet</h3>
+        <p>Every alert lands on the admin desk instantly — severity, fake-alert flags, live location, and one-click status workflow from pending to resolved.</p>
+        <a href="login.html" class="audience-link">View admin console →</a>
+      </div>
+      <div class="audience-card">
+        <div class="audience-tag">Organizations</div>
+        <h3>Patterns, not just incidents</h3>
+        <p>K-Means clustering surfaces emergency hotspots automatically from raw location history — see where risk concentrates before it repeats.</p>
+        <a href="#how-it-works" class="audience-link">See how it works →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= HOW IT WORKS ================= -->
+<section class="features-section" id="how-it-works" style="background:var(--paper-dim);padding-top:80px;">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-eyebrow">The pipeline</span>
+      <h2>From tap to dispatch, every step is automatic</h2>
+    </div>
+
+    <div class="pipeline-row">
+      <div class="pipeline-step">
+        <div class="pipeline-num">01</div>
+        <h4>Capture</h4>
+        <p>GPS locks on, emergency type + description captured.</p>
+      </div>
+      <div class="pipeline-arrow">→</div>
+      <div class="pipeline-step">
+        <div class="pipeline-num">02</div>
+        <h4>Score</h4>
+        <p>AI classifies severity: Low, Medium, High, or Critical.</p>
+      </div>
+      <div class="pipeline-arrow">→</div>
+      <div class="pipeline-step">
+        <div class="pipeline-num">03</div>
+        <h4>Verify</h4>
+        <p>Anomaly detection flags statistically suspicious patterns.</p>
+      </div>
+      <div class="pipeline-arrow">→</div>
+      <div class="pipeline-step">
+        <div class="pipeline-num">04</div>
+        <h4>Route</h4>
+        <p>Nearest hospital &amp; police station identified instantly.</p>
+      </div>
+      <div class="pipeline-arrow">→</div>
+      <div class="pipeline-step">
+        <div class="pipeline-num">05</div>
+        <h4>Dispatch</h4>
+        <p>Contacts notified, admin desk alerted, ETA predicted.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FEATURE GRID ================= -->
+<section class="features-section" id="features">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-eyebrow">What's inside</span>
+      <h2>A complete response pipeline, not just a panic button</h2>
+    </div>
+    <div class="feature-grid">
+
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+        </div>
+        <h3>One-Tap SOS</h3>
+        <p>A single, unmistakable button captures live GPS and raises an alert in under two seconds.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 3 7v6c0 5 4 9 9 9s9-4 9-9V7z"/></svg>
+        </div>
+        <h3>AI Severity Scoring</h3>
+        <p>A trained classifier scores every alert Low, Medium, High, or Critical the instant it's raised.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+        </div>
+        <h3>Fake-Alert Detection</h3>
+        <p>Anomaly detection flags statistically suspicious alerts for review — it never blocks a real emergency.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <h3>Nearest Hospital &amp; Police</h3>
+        <p>Geolocation routing surfaces the closest hospital and police station, with live directions on the map.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
+        </div>
+        <h3>AI Hotspot Detection</h3>
+        <p>K-Means clustering finds high-risk zones from historical alert locations, unsupervised.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.29 1.51 4.04 3 5.5l7 7Z"/></svg>
+        </div>
+        <h3>AI First-Aid Guidance</h3>
+        <p>Step-by-step guidance matched to the emergency type and description, the instant help is on the way.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= CTA BAND ================= -->
+<section class="cta-band">
+  <div class="container">
+    <h2>Set up your lifeline before you need one.</h2>
+    <p>Registration takes under a minute. Add your emergency contacts anytime after.</p>
+    <a href="register.html" class="btn btn-danger">Create Free Account</a>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer class="site-footer-rich">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand-col">
+        <a href="index.html" class="brand" style="color:#fff;">
+          <svg class="brand-mark" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+            <path class="pulse-line" d="M2 16 H10 L13 6 L18 26 L21 16 H30" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          LifeLine AI
+        </a>
+        <p>An intelligent emergency response and real-time safety management system — Final Year Project.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Product</h5>
+        <a href="register.html">Create Account</a>
+        <a href="login.html">Log In</a>
+        <a href="index.html#solutions">Solutions</a>
+        <a href="index.html#how-it-works">How It Works</a>
+      </div>
+      <div class="footer-col">
+        <h5>Platform</h5>
+        <a href="index.html#features">AI Severity Scoring</a>
+        <a href="index.html#features">Fake-Alert Detection</a>
+        <a href="index.html#features">Hotspot Detection</a>
+        <a href="index.html#features">First-Aid Guidance</a>
+      </div>
+      <div class="footer-col">
+        <h5>Tech Stack</h5>
+        <span>Flask &amp; MySQL</span>
+        <span>Scikit-learn</span>
+        <span>Google Maps API</span>
+        <span>Vanilla JS</span>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 LifeLine AI — Final Year Project</span>
+      <span class="mono">Built with Flask &middot; MySQL &middot; Scikit-learn &middot; Google Maps</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/config.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

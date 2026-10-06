@@ -1,0 +1,104 @@
+LIFELINE AI — ENTITY RELATIONSHIP DIAGRAM (TEXT FORMAT)
+========================================================
+
+[USERS] ||--o{ [EMERGENCY_CONTACTS]        : "has many"
+[USERS] ||--o{ [EMERGENCIES]                : "raises many"
+[USERS] ||--o{ [NOTIFICATIONS]              : "receives many"
+[EMERGENCIES] ||--o{ [EMERGENCY_LOCATIONS]  : "has GPS trail"
+[EMERGENCIES] ||--o{ [NOTIFICATIONS]        : "triggers"
+[EMERGENCIES] }o--|| [HOSPITALS]            : "assigned nearest (nullable)"
+[EMERGENCIES] }o--|| [POLICE_STATIONS]      : "assigned nearest (nullable)"
+[USERS] ||--o{ [ADMIN_LOGS]                 : "admin performs actions on"
+
+--------------------------------------------------------------------
+ENTITY: USERS
+--------------------------------------------------------------------
+PK  user_id            INT, AUTO_INCREMENT
+    full_name          VARCHAR(100)
+    email              VARCHAR(100)  UNIQUE
+    phone              VARCHAR(20)
+    password_hash      VARCHAR(255)
+    role               ENUM('user','admin')
+    blood_group        VARCHAR(5)
+    home_address        VARCHAR(255)
+    is_active          BOOLEAN
+    created_at         DATETIME
+
+--------------------------------------------------------------------
+ENTITY: EMERGENCY_CONTACTS
+--------------------------------------------------------------------
+PK  contact_id         INT, AUTO_INCREMENT
+FK  user_id            INT  -> USERS.user_id
+    contact_name       VARCHAR(100)
+    contact_phone      VARCHAR(20)
+    relationship       VARCHAR(50)
+    created_at         DATETIME
+
+--------------------------------------------------------------------
+ENTITY: EMERGENCIES
+--------------------------------------------------------------------
+PK  emergency_id       INT, AUTO_INCREMENT
+FK  user_id            INT  -> USERS.user_id
+    emergency_type     ENUM('medical','fire','accident','crime','other')
+    description        TEXT
+    latitude           DECIMAL(10,7)
+    longitude          DECIMAL(10,7)
+    severity_level     ENUM('Low','Medium','High','Critical')
+    severity_score     FLOAT
+    is_fake_suspected  BOOLEAN
+    fake_score         FLOAT
+    status             ENUM('pending','acknowledged','in_progress','resolved','cancelled')
+    nearest_hospital_id INT NULL -> HOSPITALS.hospital_id
+    nearest_police_id   INT NULL -> POLICE_STATIONS.station_id
+    created_at         DATETIME
+    resolved_at        DATETIME NULL
+
+--------------------------------------------------------------------
+ENTITY: EMERGENCY_LOCATIONS   (live GPS trail per emergency)
+--------------------------------------------------------------------
+PK  location_id        INT, AUTO_INCREMENT
+FK  emergency_id       INT  -> EMERGENCIES.emergency_id
+    latitude           DECIMAL(10,7)
+    longitude          DECIMAL(10,7)
+    recorded_at        DATETIME
+
+--------------------------------------------------------------------
+ENTITY: HOSPITALS
+--------------------------------------------------------------------
+PK  hospital_id        INT, AUTO_INCREMENT
+    name               VARCHAR(150)
+    latitude           DECIMAL(10,7)
+    longitude          DECIMAL(10,7)
+    phone              VARCHAR(20)
+    address            VARCHAR(255)
+
+--------------------------------------------------------------------
+ENTITY: POLICE_STATIONS
+--------------------------------------------------------------------
+PK  station_id         INT, AUTO_INCREMENT
+    name               VARCHAR(150)
+    latitude           DECIMAL(10,7)
+    longitude          DECIMAL(10,7)
+    phone              VARCHAR(20)
+    address            VARCHAR(255)
+
+--------------------------------------------------------------------
+ENTITY: NOTIFICATIONS
+--------------------------------------------------------------------
+PK  notification_id    INT, AUTO_INCREMENT
+FK  user_id            INT  -> USERS.user_id
+FK  emergency_id       INT NULL -> EMERGENCIES.emergency_id
+    channel            ENUM('email_sim','sms_sim','system')
+    message            TEXT
+    is_read            BOOLEAN
+    created_at         DATETIME
+
+--------------------------------------------------------------------
+ENTITY: ADMIN_LOGS
+--------------------------------------------------------------------
+PK  log_id             INT, AUTO_INCREMENT
+FK  admin_id           INT  -> USERS.user_id
+    action             VARCHAR(255)
+    target_type        VARCHAR(50)
+    target_id          INT
+    created_at         DATETIME
